@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PS England Fashion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .auth-logo img {
+            height: 100px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .auth-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        .auth-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-box h2 {
+            text-align: center;
+            color: var(--black);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-black);
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--grey);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .auth-btn:hover {
+            background: #e62e68;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            user-select: none;
+        }
+
+        .remember-me input[type="checkbox"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .remember-me label {
+            color: var(--light-black);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: var(--grey);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .social-login p::before,
+        .social-login p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: var(--grey);
+        }
+
+        .social-login p::before {
+            left: 0;
+        }
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--grey);
+            color: var(--light-black);
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        @media (max-width: 480px) {
+            .auth-box {
+                padding: 20px;
+            }
+
+            .auth-box h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Text Selection Styling */
+        ::selection {
+            background: var(--primary-color, #ff3c78);
+            color: var(--white, #ffffff);
+        }
+
+        ::-moz-selection {
+            background: var(--primary-color, #ff3c78);
+            color: var(--white, #ffffff);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-logo">
+                <a href="index.html">
+                    <img src="https://i.postimg.cc/Xv0zV7BB/Modern-Zoo-Global-Logo-Design.png" alt="PS England Fashion">
+                </a>
+            </div>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+                <div class="auth-links">
+                    <a href="forgot-password.html" id="forgotPassword">Forgot Password?</a>
+                    <a href="forgot-username.html" id="forgotUsername">Forgot Username?</a>
+                    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+                </div>
+                <div class="social-login">
+                    <p>Or login with</p>
+                    <div class="social-icons">
+                        <a href="#" id="googleLogin"><i class='bx bxl-google'></i></a>
+                        <a href="#" id="facebookLogin"><i class='bx bxl-facebook'></i></a>
+                        <a href="#" id="twitterLogin"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Social Login SDKs - Commented out for demo mode -->
+    <!-- Uncomment and configure for production use -->
+    <!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
+    <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script> -->
+    
+    <script>
+        // Check for remembered credentials
+        window.addEventListener('load', function() {
+            const rememberedUser = localStorage.getItem('rememberedUser');
+            if (rememberedUser) {
+                const { email } = JSON.parse(rememberedUser);
+                document.getElementById('email').value = email;
+                document.getElementById('rememberMe').checked = true;
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        email, 
+                        password,
+                        rememberMe,
+                        deviceInfo: {
+                            userAgent: navigator.userAgent,
+                            platform: navigator.platform
+                        }
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Handle Remember Me
+                    if (rememberMe) {
+                        localStorage.setItem('rememberedUser', JSON.stringify({
+                            email,
+                            timestamp: new Date().getTime()
+                        }));
+                    } else {
+                        localStorage.removeItem('rememberedUser');
+                    }
+
+                    // Store the session token
+                    sessionStorage.setItem('sessionToken', data.token);
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    if (!data.user.isVerified) {
+                        alert('Please verify your email address. Check your inbox for the verification link.');
+                    } else {
+                        // Show success message
+                        alert('Login successful!');
+                        
+                        // Redirect to home page
+                        window.location.href = 'index.html';
+                    }
+                } else {
+                    // Show error message
+                    alert(data.message || 'Login failed. Please check your credentials.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Login failed. Please try again later.');
+            }
+        });
+
+        // Social Login Functions
+        
+        // Initialize Facebook SDK with demo mode fallback
+        window.fbAsyncInit = function() {
+            // Only initialize if you have a real Facebook App ID
+            // For demo, we'll skip FB initialization
+            console.log('Facebook SDK would initialize here with real App ID');
+        };
+
+        // Google Login with improved demo fallback
+        function initializeGoogleSignIn() {
+            // Only initialize if you have a real Google Client ID
+            // For demo, we'll skip Google initialization
+            console.log('Google Sign-In would initialize here with real Client ID');
+        }
+
+        function handleGoogleSignIn(response) {
+            // This would handle real Google sign-in
+            const userInfo = JSON.parse(atob(response.credential.split('.')[1]));
+            
+            const profile = {
+                id: userInfo.sub,
+                name: userInfo.name,
+                email: userInfo.email,
+                picture: userInfo.picture
+            };
+
+            socialLogin('google', { token: response.credential, profile });
+        }
+
+        document.getElementById('googleLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Direct demo login without alert
+            const demoProfile = {
+                id: 'google_demo_' + Date.now(),
+                name: 'Google Demo User',
+                email: 'demo.google@example.com',
+                picture: 'https://via.placeholder.com/100/4285F4/ffffff?text=G'
+            };
+            socialLogin('google', { token: 'demo_google_token', profile: demoProfile });
+        });
+
+        // Facebook Login
+        document.getElementById('facebookLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Direct demo login without alert
+            const demoProfile = {
+                id: 'facebook_demo_' + Date.now(),
+                name: 'Facebook Demo User',
+                email: 'demo.facebook@example.com',
+                picture: { data: { url: 'https://via.placeholder.com/100/1877F2/ffffff?text=F' } }
+            };
+            socialLogin('facebook', { accessToken: 'demo_facebook_token', profile: demoProfile });
+        });
+
+        // Twitter Login
+        document.getElementById('twitterLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Direct demo login without alert
+            const demoProfile = {
+                id: 'twitter_demo_' + Date.now(),
+                name: 'Twitter Demo User',
+                screen_name: 'demo_twitter',
+                email: 'demo.twitter@example.com',
+                profile_image_url_https: 'https://via.placeholder.com/100/1DA1F2/ffffff?text=T'
+            };
+            socialLogin('twitter', { 
+                token: 'demo_twitter_token', 
+                tokenSecret: 'demo_twitter_secret', 
+                profile: demoProfile 
+            });
+        });
+
+        // Generic social login function
+        async function socialLogin(provider, data) {
+            try {
+                console.log(`Attempting ${provider} login with data:`, data);
+                
+                const response = await fetch(`http://localhost:5000/api/auth/social-login/${provider}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                console.log(`${provider} response status:`, response.status);
+                const result = await response.json();
+                console.log(`${provider} response data:`, result);
+                
+                if (response.ok) {
+                    // Store the session token
+                    sessionStorage.setItem('sessionToken', result.token);
+                    localStorage.setItem('token', result.token);
+                    localStorage.setItem('user', JSON.stringify(result.user));
+                    
+                    // Show success message
+                    alert(`Welcome ${result.user.name}! Login successful via ${provider.charAt(0).toUpperCase() + provider.slice(1)}.`);
+                    
+                    // Redirect to home page
+                    window.location.href = 'index.html';
+                } else {
+                    console.error(`${provider} login error:`, result);
+                    alert(result.message || `${provider} login failed. Please try again.`);
+                }
+            } catch (error) {
+                console.error(`${provider} login network error:`, error);
+                // Check if server is running
+                alert(`Network error during ${provider} login. Please check if the server is running on port 5000.`);
+            }
+        }
+
+        // Initialize social logins when page loads (demo mode)
+        window.addEventListener('load', function() {
+            console.log('Social login demo mode ready');
+            // In production, you would initialize real OAuth SDKs here
+        });
+    </script>
+</body>
+</html>

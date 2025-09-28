@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <title>Fashion E-Commerce Store</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="navbar-enhancements.css">
+        <link rel="stylesheet" href="mobile-enhancements.css">
+                <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>        
+                <link rel=\"stylesheet\" href=\"search-styles.css\">        <script src=\"search-enhanced.js\"></script>
+    </head>
+<body>
+    <section class=" top-txt ">
+        <div class="head container ">
+            <div class="head-txt ">
+                <p>Free shipping, 30-day return or refund guarantee.</p>
+            </div>
+            <div class="sing_in_up ">
+                <a href="login.html">SIGN IN</a>
+                <a href="signup.html">SIGN UP</a>
+            </div>
+        </div>
+    </section>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <div class="mobile-menu-overlay"></div>
+            <ul class="menu-items">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sellers">Shop</a></li>
+                <li><a href="#news">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="logo">
+                <a href="index.html">
+                <img src="https://i.postimg.cc/Xv0zV7BB/Modern-Zoo-Global-Logo-Design.png" alt="">
+                </a>
+            </div>
+            <div class="search-container-nav">
+                <input type="search" id="search-input" class="search-input" 
+                       placeholder="Search products..." 
+                       aria-label="Search products">
+                <div id="search-results" class="search-results"></div>
+            </div>
+            <div class="navbar-actions">
+                <button class="cart-icon" onclick="openCart()" onkeydown="if(event.key==='Enter'||event.key===' ')openCart()" tabindex="0" aria-label="Open shopping cart">
+                    <i class='bx bx-shopping-bag'></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="user-menu" id="userMenu">
+                    <button class="user-icon" onclick="toggleUserMenu()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleUserMenu()" tabindex="0" aria-label="User menu">
+                        <i class='bx bx-user-circle'></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-info" id="userInfo" style="display: none;">
+                            <span id="userName">Guest</span>
+                        </div>
+                        <a href="profile.html" id="profileLink" style="display: none;">My Profile</a>
+                        <a href="orders.html" id="ordersLink" style="display: none;">My Orders</a>
+                        <a href="wishlist.html" id="wishlistLink" style="display: none;">Wishlist</a>
+                        <hr id="userDivider" style="display: none;">
+                        <a href="login.html" id="loginLink">Sign In</a>
+                        <a href="signup.html" id="signupLink">Sign Up</a>
+                        <button type="button" id="logoutLink" onclick="logout()" style="display: none; background: none; border: none; text-align: left; padding: 10px 15px; width: 100%; cursor: pointer;">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile search container (will be shown only on mobile) -->
+    <div class="search-container-mobile container">
+        <input type="search" id="search-input-mobile" class="search-input" 
+               placeholder="Search products..." 
+               aria-label="Search products">
+        <div id="search-results-mobile" class="search-results"></div>
+    </div>
+    
+    <section id="home" style="position: relative; margin-top: -10px;">
+        <div class="home_page ">
+            <div class="home_img ">
+                <img src="https://i.postimg.cc/t403yfn9/home2.jpg" alt="img ">
+            </div>
+            <div class="home_txt ">
+                <p class="collectio ">SUMMER COLLECTION</p>
+                <h2>FALL - WINTER<br>Collection 2023</h2>
+                <div class="home_label ">
+                    <p>A specialist label creating luxury essentials. Ethically crafted<br>with an unwavering commitment to exceptional quality.</p>
+                </div>
+                <button><a href="#sellers">SHOP NOW</a><i class='bx bx-right-arrow-alt'></i></button>
+                <div class="home_social_icons">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-pinterest'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection">
+        <div class="collections container">
+            <div class="content">
+                <img src="https://i.postimg.cc/Xqmwr12c/clothing.webp" alt="img" />
+                <div class="img-content">
+                    <p>Clothing Collections</p>
+                    <button><a href="#sellers">SHOP NOW</a></button>
+                </div>
+            </div>
+            <div class="content2">
+                <img src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img" />
+                <div class="img-content2">
+                    <p>Shoes Spring</p>
+                    <button><a href="#sellers">SHOP NOW</a></button>
+                </div>
+            </div>
+            <div class="content3">
+                <img src="https://i.postimg.cc/MHv7KJYp/access.webp" alt="img" />
+                <div class="img-content3">
+                    <p>Accessories</p>
+                    <button><a href="#sellers">SHOP NOW</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sellers">
+        <div class="seller container">
+            <h2>Top Sales</h2>
+            <div class="best-seller">
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Shoes</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹3,302</span>
+                            <span class="original-price">₹3,800</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle red'></i>
+                                <i class='bx bxs-circle blue'></i>
+                                <i class='bx bxs-circle white'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod001', 'PS England Shoes', 3302, 'https://i.postimg.cc/8CmBZH5N/shoes.webp')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod001', 'PS England Shoes', 3302, 'https://i.postimg.cc/8CmBZH5N/shoes.webp')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/76X9ZV8m/Screenshot_from_2022-06-03_18-45-12.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Jacket</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹1,528</span>
+                            <span class="original-price">₹1,800</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle green'></i>
+                                <i class='bx bxs-circle grey'></i>
+                                <i class='bx bxs-circle brown'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod002', 'PS England Jacket', 1528, 'https://i.postimg.cc/76X9ZV8m/Screenshot_from_2022-06-03_18-45-12.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod002', 'PS England Jacket', 1528, 'https://i.postimg.cc/76X9ZV8m/Screenshot_from_2022-06-03_18-45-12.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/j2FhzSjf/bs2.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Shirt</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹2,414</span>
+                            <span class="original-price">₹2,800</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle brown'></i>
+                                <i class='bx bxs-circle green'></i>
+                                <i class='bx bxs-circle blue'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod003', 'PS England Shirt', 2414, 'https://i.postimg.cc/j2FhzSjf/bs2.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod003', 'PS England Shirt', 2414, 'https://i.postimg.cc/j2FhzSjf/bs2.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/QtjSDzPF/bs3.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Shoes</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹3,625</span>
+                            <span class="original-price">₹4,200</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle red'></i>
+                                <i class='bx bxs-circle grey'></i>
+                                <i class='bx bxs-circle blue'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod1', 'PS England Shoes', 3625, 'https://i.postimg.cc/QtjSDzPF/bs3.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod1', 'PS England Shoes', 3625, 'https://i.postimg.cc/QtjSDzPF/bs3.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional Product Cards for Horizontal Scrolling -->
+                <div class="best-p1">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop" alt="Smart Watch">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Smart Watch Series</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹12,450</span>
+                            <span class="original-price">₹15,000</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle' style='color: black'></i>
+                                <i class='bx bxs-circle' style='color: silver'></i>
+                                <i class='bx bxs-circle' style='color: gold'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod005', 'Smart Watch Series', 12450, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod005', 'Smart Watch Series', 12450, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop" alt="Sunglasses">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Designer Sunglasses</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹4,150</span>
+                            <span class="original-price">₹5,500</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle' style='color: black'></i>
+                                <i class='bx bxs-circle' style='color: brown'></i>
+                                <i class='bx bxs-circle' style='color: blue'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod006', 'Designer Sunglasses', 4150, 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod006', 'Designer Sunglasses', 4150, 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop" alt="Headphones">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>Wireless Headphones</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹8,300</span>
+                            <span class="original-price">₹10,500</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle' style='color: black'></i>
+                                <i class='bx bxs-circle' style='color: white'></i>
+                                <i class='bx bxs-circle' style='color: red'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod007', 'Wireless Headphones', 8300, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod007', 'Wireless Headphones', 8300, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seller container">
+            <h2>New Arrivals</h2>
+            <div class="best-seller">
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/fbnB2yfj/na1.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England T-Shirt</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹849</span>
+                            <span class="original-price">₹999</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle blank'></i>
+                                <i class='bx bxs-circle blue'></i>
+                                <i class='bx bxs-circle brown'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod2', 'PS England T-Shirt', 849, 'https://i.postimg.cc/fbnB2yfj/na1.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod2', 'PS England T-Shirt', 849, 'https://i.postimg.cc/fbnB2yfj/na1.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/zD02zJq8/na2.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Bag</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹770</span>
+                            <span class="original-price">₹890</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle brown'></i>
+                                <i class='bx bxs-circle red'></i>
+                                <i class='bx bxs-circle green'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod3', 'PS England Bag', 770, 'https://i.postimg.cc/zD02zJq8/na2.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod3', 'PS England Bag', 770, 'https://i.postimg.cc/zD02zJq8/na2.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/Dfj5VBcz/sunglasses1.jpg" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Sunglass</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹553</span>
+                            <span class="original-price">₹650</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle grey'></i>
+                                <i class='bx bxs-circle blank'></i>
+                                <i class='bx bxs-circle brown'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod8', 'PS England Sunglass', 553, 'https://i.postimg.cc/Dfj5VBcz/sunglasses1.jpg')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod8', 'PS England Sunglass', 553, 'https://i.postimg.cc/Dfj5VBcz/sunglasses1.jpg')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/FszW12Kc/na4.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Shoes</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹3,625</span>
+                            <span class="original-price">₹4,200</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle grey'></i>
+                                <i class='bx bxs-circle red'></i>
+                                <i class='bx bxs-circle blue'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod4', 'PS England Shoes', 3625, 'https://i.postimg.cc/FszW12Kc/na4.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod4', 'PS England Shoes', 3625, 'https://i.postimg.cc/FszW12Kc/na4.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seller container">
+            <h2>Hot Sales</h2>
+            <div class="best-seller">
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/jS7pSQLf/na4.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Shoes</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹3,091</span>
+                            <span class="original-price">₹3,599</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle grey'></i>
+                                <i class='bx bxs-circle black'></i>
+                                <i class='bx bxs-circle blue'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod5', 'PS England Shoes', 3091, 'https://i.postimg.cc/jS7pSQLf/na4.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod5', 'PS England Shoes', 3091, 'https://i.postimg.cc/jS7pSQLf/na4.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/fbnB2yfj/na1.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England T-Shirt</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹849</span>
+                            <span class="original-price">₹999</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle blank'></i>
+                                <i class='bx bxs-circle blue'></i>
+                                <i class='bx bxs-circle brown'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod6', 'PS England T-Shirt', 849, 'https://i.postimg.cc/fbnB2yfj/na1.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod6', 'PS England T-Shirt', 849, 'https://i.postimg.cc/fbnB2yfj/na1.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/RhVP7YQk/hs1.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England T-Shirt</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹1,351</span>
+                            <span class="original-price">₹1,600</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle blank'></i>
+                                <i class='bx bxs-circle red'></i>
+                                <i class='bx bxs-circle blue'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod9', 'PS England T-Shirt', 1351, 'https://i.postimg.cc/RhVP7YQk/hs1.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod9', 'PS England T-Shirt', 1351, 'https://i.postimg.cc/RhVP7YQk/hs1.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="best-p1">
+                    <img src="https://i.postimg.cc/zD02zJq8/na2.png" alt="img">
+                    <div class="best-p1-txt">
+                        <div class="name-of-p">
+                            <p>PS England Bag</p>
+                        </div>
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">₹770</span>
+                            <span class="original-price">₹890</span>
+                            <div class="colors">
+                                <i class='bx bxs-circle blank'></i>
+                                <i class='bx bxs-circle grey'></i>
+                                <i class='bx bxs-circle brown'></i>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart('prod7', 'PS England Bag', 770, 'https://i.postimg.cc/zD02zJq8/na2.png')">
+                                <i class='bx bx-cart'></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow('prod7', 'PS England Bag', 770, 'https://i.postimg.cc/zD02zJq8/na2.png')">
+                                <i class='bx bx-shopping-bag'></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="news">
+        <div class="news-heading">
+            <p>LATEST NEWS</p>
+            <h2>Fashion New Trends</h2>
+        </div>
+        <div class="l-news container">
+            <div class="l-news1">
+                <div class="news1-img">
+                    <img src="https://i.postimg.cc/2y6wbZCm/news1.jpg" alt="img">
+                </div>
+                <div class="news1-conte">
+                    <div class="date-news1">
+                        <p><i class='bx bxs-calendar'></i> 12 February 2022</p>
+                        <h4>What Curling Irons Are The Best Ones</h4>
+                        <a href="https://www.vogue.com/article/best-curling-irons" target="_blank">read more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="l-news2">
+                <div class="news2-img">
+                    <img src="https://i.postimg.cc/9MXPK7RT/news2.jpg" alt="img">
+                </div>
+                <div class="news2-conte">
+                    <div class="date-news2">
+                        <p><i class='bx bxs-calendar'></i> 17 February 2022</p>
+                        <h4>The Health Benefits Of Sunglasses</h4>
+                        <a href="https://www.rivieraopticare.com/blog/314864-the-health-benefits-of-wearing-sunglasses_2/" target="_blank">read more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="l-news3">
+                <div class="news3-img">
+                    <img src="https://i.postimg.cc/x1KKdRLM/news3.jpg" alt="img">
+                </div>
+                <div class="news3-conte">
+                    <div class="date-news3">
+                        <p><i class='bx bxs-calendar'></i> 26 February 202</p>
+                        <h4>Eternity Bands Do Last Forever</h4>
+                        <a href="https://www.briangavindiamonds.com/news/eternity-bands-symbolize-love-that-lasts-forever/" target="_blank">read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="contact container">
+        <h1>Contact Us</h1>
+        
+        <form action="https://formspree.io/f/xzbowpjq" method="POST">
+            <div class="form">
+                <div class="form-txt">
+    <h4>INFORMATION</h4>
+    
+    <span>
+        Welcome to <strong>ZOO Global</strong> – a leading Ecommerce application that provides everything you expect from a modern online marketplace. 
+        From fashion and electronics to daily essentials, we bring the world of shopping right to your fingertips. 
+        What makes us unique is our special <em>Gift Service</em> – now you can surprise your loved ones by sending them products beautifully wrapped in gift paper, delivered with care. 
+        At ZOO Global, we believe shopping is not just about buying, it’s about creating joyful moments.
+    </span>
+    
+    <h3>Head Office - India</h3>
+    <p>Suresh Gyan Vihar University<br>
+       Email: Prakashsumit27nov@gmail.com
+    </p>
+    
+    <h3>Branch - India</h3>
+    <p>Jaipur<br>
+       Pincode: 302017
+    </p>
+</div>
+
+                <div class="form-details">
+                    <input type="text" name="name" id="name" placeholder="Name" required>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <textarea name="message" id="message" cols="52" rows="7" placeholder="Message" required></textarea>
+                    <button>SEND MESSAGE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </section>
+    <footer>
+        <div class="footer-container container">
+            <div class="content_1">
+                <img src="https://i.postimg.cc/htGyQ4JB/footer-logo.png" alt="logo">
+                <p>The customer is at the heart of our<br>unique business model, which includes<br>design.</p>
+                <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
+            </div>
+            <div class="content_2">
+                <h4>SHOPPING</h4>
+                <a href="#sellers">Clothing Store</a>
+                <a href="#sellers">Trending Shoes</a>
+                <a href="#sellers">Accessories</a>
+                <a href="#sellers">Sale</a>
+            </div>
+            <div class="content_3">
+                <h4>SHOPPING</h4>
+                <a href="./contact.html">Contact Us</a>
+                <a href="https://payment-method-sb.netlify.app/" target="_blank">Payment Method</a>
+                <a href="https://delivery-status-sb.netlify.app/" target="_blank">Delivery</a>
+                <a href="https://codepen.io/sandeshbodake/full/Jexxrv" target="_blank">Return and Exchange</a>
+            </div>
+            <div class="content_4">
+                <h4>NEWLETTER</h4>
+                <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+                <div class="f-mail">
+                    <input type="email" placeholder="Your Email">
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="f-design">
+            <div class="f-design-txt container">
+                <p>Design and Code by code.sanket</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for functionality -->
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        searchInput.addEventListener('input', async function() {
+            const query = this.value.trim();
+            
+            if (query.length < 2) {
+                searchResults.innerHTML = '';
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            try {
+                console.log('Searching for:', query);
+                const response = await fetch(`http://localhost:5000/api/products/search?q=${encodeURIComponent(query)}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Search results:', data);
+                
+                if (data.results && data.results.length > 0) {
+                    searchResults.innerHTML = data.results.map(product => `
+                        <div class="search-result-item" onclick="viewProduct('${product._id}')">
+                            <img src="${product.mainImage || 'https://via.placeholder.com/50'}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/50'">
+                            <div class="search-result-content">
+                                <h4>${product.title}</h4>
+                                <p class="description">${product.descriptionShort || ''}</p>
+                                <p class="price">$${product.price}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                    searchResults.style.display = 'block';
+                } else {
+                    searchResults.innerHTML = '<div class="no-results">No products found for "' + query + '"</div>';
+                    searchResults.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                searchResults.innerHTML = '<div class="search-error">Search temporarily unavailable. Please try again.</div>';
+                searchResults.style.display = 'block';
+            }
+        });
+
+        // Hide search results when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.search-container')) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // User authentication check
+        function checkAuthStatus() {
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+            const signInUpDiv = document.querySelector('.sing_in_up');
+            
+            if (token && user) {
+                try {
+                    const userData = JSON.parse(user);
+                    signInUpDiv.innerHTML = `
+                        <span>Welcome, ${userData.name}!</span>
+                        <a href="#" onclick="logout()">LOGOUT</a>
+                    `;
+                } catch (error) {
+                    console.error('Error parsing user data:', error);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                }
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            sessionStorage.removeItem('sessionToken');
+            location.reload();
+        }
+
+        function viewProduct(productId) {
+            // For now, just log the product ID
+            console.log('Viewing product:', productId);
+            alert('Product view functionality will be implemented soon!');
+        }
+
+        // Load products functionality
+        async function loadProducts() {
+            try {
+                const response = await fetch('http://localhost:5000/api/products');
+                const data = await response.json();
+                
+                const bestSellerContainer = document.querySelector('.best-seller');
+                if (bestSellerContainer && data.products) {
+                    bestSellerContainer.innerHTML = data.products.slice(0, 8).map(product => `
+                        <div class="best-p1" onclick="openProductDetail('${product._id}')">
+                            <img src="${product.mainImage || 'https://via.placeholder.com/300'}" alt="${product.title}">
+                            <div class="best-p1-txt">
+                                <div class="name-of-p">
+                                    <p>${product.title}</p>
+                                </div>
+                                <div class="rating">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bx-star'></i>
+                                    <span class="rating-text">(4.2)</span>
+                                </div>
+                                <div class="price">
+                                    <span class="current-price">₹${(product.price * 83).toLocaleString('en-IN')}</span>
+                                    <span class="original-price">₹${((product.price * 83) * 1.25).toLocaleString('en-IN')}</span>
+                                    <span class="discount">20% off</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">
+                                        <i class='bx bx-cart-plus'></i> Add to Cart
+                                    </button>
+                                    <button class="btn-buy-now" onclick="event.stopPropagation(); buyNow('${product._id}')">
+                                        <i class='bx bx-lightning'></i> Buy Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading products:', error);
+            }
+        }
+
+        function openProductDetail(productId) {
+            window.location.href = `product-detail.html?id=${productId}`;
+        }
+
+        function openCart() {
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                alert('Please login to view cart');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            window.location.href = 'cart.html';
+        }
+
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        async function updateCartCount() {
+            const token = localStorage.getItem('token');
+            const cartCountElement = document.getElementById('cartCount');
+            
+            if (!token || !cartCountElement) {
+                if (cartCountElement) cartCountElement.textContent = '0';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:5000/api/cart', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const cartData = await response.json();
+                    const itemCount = cartData.items ? cartData.items.reduce((total, item) => total + item.quantity, 0) : 0;
+                    cartCountElement.textContent = itemCount.toString();
+                } else {
+                    cartCountElement.textContent = '0';
+                }
+            } catch (error) {
+                console.error('Error updating cart count:', error);
+                cartCountElement.textContent = '0';
+            }
+        }
+
+        function toggleWishlist(productId) {
+            // Wishlist functionality to be implemented
+            console.log('Toggle wishlist for product:', productId);
+            alert('Wishlist feature coming soon!');
+        }
+
+        // Add to Cart functionality
+        async function addToCart(productId, productName, price, imageUrl) {
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                alert('Please sign in to add items to cart');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:5000/api/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        productId: productId,
+                        name: productName,
+                        price: price,
+                        image: imageUrl,
+                        quantity: 1
+                    })
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    showNotification('Product added to cart successfully!', 'success');
+                    updateCartCount();
+                } else {
+                    const errorData = await response.json();
+                    showNotification(errorData.message || 'Failed to add to cart', 'error');
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                showNotification('Network error. Please try again.', 'error');
+            }
+        }
+
+        // Buy Now functionality
+        function buyNow(productId, productName, price, imageUrl) {
+            // Store product details for checkout
+            const productData = {
+                id: productId,
+                name: productName,
+                price: price,
+                image: imageUrl,
+                quantity: 1
+            };
+            
+            localStorage.setItem('buyNowProduct', JSON.stringify(productData));
+            
+            // Redirect to product detail page or directly to checkout
+            window.location.href = `product-detail.html?id=${productId}&name=${encodeURIComponent(productName)}&price=${price}&image=${encodeURIComponent(imageUrl)}`;
+        }
+
+        // Show notification function
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            // Determine icon based on type
+            let iconClass;
+            if (type === 'success') {
+                iconClass = 'bx-check-circle';
+            } else if (type === 'error') {
+                iconClass = 'bx-error';
+            } else {
+                iconClass = 'bx-info-circle';
+            }
+            
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class='bx ${iconClass}'></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // Determine background color based on type
+            let backgroundColor;
+            if (type === 'success') {
+                backgroundColor = '#4caf50';
+            } else if (type === 'error') {
+                backgroundColor = '#f44336';
+            } else {
+                backgroundColor = '#2196f3';
+            }
+            
+            // Add styles
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${backgroundColor};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                min-width: 300px;
+                animation: slideInRight 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Add CSS animations for notifications
+        const notificationStyles = `
+            .cart-icon, .user-icon {
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 5px;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+            }
+            
+            .cart-icon:hover, .user-icon:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .cart-icon:focus, .user-icon:focus {
+                outline: 2px solid #007bff;
+                outline-offset: 2px;
+            }
+            
+            .cart-icon i, .user-icon i {
+                font-size: 20px;
+                color: inherit;
+            }
+            
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = notificationStyles;
+        document.head.appendChild(styleSheet);
+
+        // Update user menu based on login status
+        function updateUserMenu() {
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            const userInfo = document.getElementById('userInfo');
+            const userName = document.getElementById('userName');
+            const profileLink = document.getElementById('profileLink');
+            const ordersLink = document.getElementById('ordersLink');
+            const wishlistLink = document.getElementById('wishlistLink');
+            const userDivider = document.getElementById('userDivider');
+            const loginLink = document.getElementById('loginLink');
+            const signupLink = document.getElementById('signupLink');
+            const logoutLink = document.getElementById('logoutLink');
+            
+            if (token && user.name) {
+                // User is logged in
+                userInfo.style.display = 'block';
+                userName.textContent = user.name || 'User';
+                profileLink.style.display = 'block';
+                ordersLink.style.display = 'block';
+                wishlistLink.style.display = 'block';
+                userDivider.style.display = 'block';
+                loginLink.style.display = 'none';
+                signupLink.style.display = 'none';
+                logoutLink.style.display = 'block';
+            } else {
+                // User is not logged in
+                userInfo.style.display = 'none';
+                profileLink.style.display = 'none';
+                ordersLink.style.display = 'none';
+                wishlistLink.style.display = 'none';
+                userDivider.style.display = 'none';
+                loginLink.style.display = 'block';
+                signupLink.style.display = 'block';
+                logoutLink.style.display = 'none';
+            }
+        }
+
+        // Contact form functionality
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                if (name && email && message) {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+        }
+
+        // Newsletter subscription
+        const newsletterInput = document.querySelector('.f-mail input[type="email"]');
+        const newsletterIcon = document.querySelector('.f-mail i');
+        
+        if (newsletterIcon) {
+            newsletterIcon.addEventListener('click', function() {
+                const email = newsletterInput.value.trim();
+                if (email && email.includes('@')) {
+                    alert('Thank you for subscribing to our newsletter!');
+                    newsletterInput.value = '';
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthStatus();
+            loadProducts();
+            updateCartCount();
+            updateUserMenu();
+            
+            // Close user dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const userMenu = document.getElementById('userMenu');
+                const dropdown = document.getElementById('userDropdown');
+                
+                if (userMenu && dropdown && !userMenu.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+            
+            // Mobile menu overlay click handler
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            const checkbox = document.getElementById('checkbox');
+            
+            if (overlay && checkbox) {
+                overlay.addEventListener('click', function() {
+                    checkbox.checked = false;
+                });
+            }
+            
+            // Close mobile menu when clicking menu items
+            const menuItems = document.querySelectorAll('.menu-items a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (checkbox) {
+                        checkbox.checked = false;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

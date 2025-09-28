@@ -1,0 +1,37 @@
+# Simple deployment with just the app container
+FROM node:18-slim
+
+# Install nginx
+RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*
+
+# Create app directory
+WORKDIR /app
+
+# Install app dependencies
+COPY backend/package*.json ./
+RUN npm install --production
+
+# Copy backend source
+COPY backend/ .
+
+# Create uploads directory
+RUN mkdir -p uploads
+
+# Create public directory and copy frontend files
+RUN mkdir -p public
+COPY *.html public/
+COPY *.css public/
+COPY js/ public/js/
+COPY admin/ public/admin/
+
+# Copy nginx config
+COPY nginx.simple.conf /etc/nginx/nginx.conf
+
+# Create startup script
+RUN echo '#!/bin/bash\nnginx -g "daemon off;" &\nsleep 2\ncd /app\nnpm start' > /start.sh && chmod +x /start.sh
+
+# Expose port 80 for web access
+EXPOSE 80
+
+# Start the application
+CMD ["/start.sh"]

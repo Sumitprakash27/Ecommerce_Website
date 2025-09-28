@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Navbar Test</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; }
+        
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            padding: 0 15px;
+            position: relative;
+        }
+        
+        /* Hamburger on the left */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+        }
+        
+        /* Logo centered */
+        .logo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* Cart and Profile on the right */
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cart-icon, .user-icon {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 22px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-icon:hover, .user-icon:hover {
+            background: rgba(255, 60, 120, 0.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff3c78;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .mobile-demo {
+            max-width: 375px;
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Mobile Navbar Preview</h1>
+        <p>Here's how your mobile navbar will look:</p>
+        
+        <div class="mobile-demo">
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <!-- Hamburger Menu (Left) -->
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    
+                    <!-- Logo (Center) -->
+                    <div class="logo">
+                        <img src="https://i.postimg.cc/Xv0zV7BB/Modern-Zoo-Global-Logo-Design.png" alt="Logo">
+                    </div>
+                    
+                    <!-- Cart & Profile (Right) -->
+                    <div class="navbar-actions">
+                        <button class="cart-icon">
+                            🛍️
+                            <span class="cart-count">3</span>
+                        </button>
+                        <button class="user-icon">
+                            👤
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            
+            <div style="padding: 20px; background: #f8f9fa; text-align: center;">
+                <h3>Perfect Mobile Layout!</h3>
+                <p>✅ Hamburger menu on left<br>
+                ✅ Logo centered<br>
+                ✅ Cart & Profile on right<br>
+                ✅ Touch-friendly buttons<br>
+                ✅ Cart badge visible</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

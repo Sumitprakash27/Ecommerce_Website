@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - PS England Fashion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .auth-logo img {
+            height: 100px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .auth-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        .auth-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-box h2 {
+            text-align: center;
+            color: var(--black);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-black);
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--grey);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .name-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .auth-btn:hover {
+            background: #e62e68;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: var(--grey);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .social-login p::before,
+        .social-login p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: var(--grey);
+        }
+
+        .social-login p::before {
+            left: 0;
+        }
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--grey);
+            color: var(--light-black);
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        @media (max-width: 480px) {
+            .auth-box {
+                padding: 20px;
+            }
+
+            .auth-box h2 {
+                font-size: 1.5rem;
+            }
+
+            .name-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Text Selection Styling */
+        ::selection {
+            background: var(--primary-color, #ff3c78);
+            color: var(--white, #ffffff);
+        }
+
+        ::-moz-selection {
+            background: var(--primary-color, #ff3c78);
+            color: var(--white, #ffffff);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-logo">
+                <a href="index.html">
+                    <img src="https://i.postimg.cc/Xv0zV7BB/Modern-Zoo-Global-Logo-Design.png" alt="PS England Fashion">
+                </a>
+            </div>
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <div class="name-group">
+                    <div class="input-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required minlength="8">
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8">
+                </div>
+                <button type="submit" class="auth-btn">Sign Up</button>
+                <div class="auth-links">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                </div>
+                <div class="social-login">
+                    <p>Or sign up with</p>
+                    <div class="social-icons">
+                        <a href="#" id="googleSignup"><i class='bx bxl-google'></i></a>
+                        <a href="#" id="facebookSignup"><i class='bx bxl-facebook'></i></a>
+                        <a href="#" id="twitterSignup"><i class='bx bxl-twitter'></i></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Social Login SDKs - Commented out for demo mode -->
+    <!-- Uncomment and configure for production use -->
+    
+    <script>
+        function validatePassword(password) {
+            const minLength = 8;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+            const hasNumbers = /\d/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+            const errors = [];
+            if (password.length < minLength) {
+                errors.push('Password must be at least 8 characters long');
+            }
+            if (!hasUpperCase) {
+                errors.push('Password must contain at least one uppercase letter');
+            }
+            if (!hasLowerCase) {
+                errors.push('Password must contain at least one lowercase letter');
+            }
+            if (!hasNumbers) {
+                errors.push('Password must contain at least one number');
+            }
+            if (!hasSpecialChar) {
+                errors.push('Password must contain at least one special character');
+            }
+            return errors;
+        }
+
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const errors = validatePassword(password);
+            const feedbackElement = this.nextElementSibling || document.createElement('div');
+            feedbackElement.className = 'password-feedback';
+            
+            if (errors.length > 0) {
+                feedbackElement.innerHTML = errors.join('<br>');
+                feedbackElement.style.color = '#ff3c78';
+            } else {
+                feedbackElement.innerHTML = '✓ Password is strong';
+                feedbackElement.style.color = '#4CAF50';
+            }
+            
+            if (!this.nextElementSibling) {
+                this.parentNode.appendChild(feedbackElement);
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            const passwordErrors = validatePassword(password);
+            if (passwordErrors.length > 0) {
+                alert('Please fix password issues:\n' + passwordErrors.join('\n'));
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: `${firstName} ${lastName}`,
+                        email,
+                        password
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Show success message
+                    alert('Registration successful! Please login.');
+                    
+                    // Redirect to login page
+                    window.location.href = 'login.html';
+                } else {
+                    // Show error message
+                    alert(data.message || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('Registration failed. Please try again later.');
+            }
+        });
+
+        // Social Login Functions for Signup
+        
+        // Initialize Facebook SDK with demo mode fallback
+        window.fbAsyncInit = function() {
+            // Only initialize if you have a real Facebook App ID
+            // For demo, we'll skip FB initialization
+            console.log('Facebook SDK would initialize here with real App ID');
+        };
+
+        // Google Signup with improved demo fallback
+        function initializeGoogleSignIn() {
+            // Only initialize if you have a real Google Client ID
+            // For demo, we'll skip Google initialization
+            console.log('Google Sign-In would initialize here with real Client ID');
+        }
+
+        function handleGoogleSignup(response) {
+            // Decode the credential to get user info
+            const userInfo = JSON.parse(atob(response.credential.split('.')[1]));
+            
+            const profile = {
+                id: userInfo.sub,
+                name: userInfo.name,
+                email: userInfo.email,
+                picture: userInfo.picture
+            };
+
+            socialSignup('google', { token: response.credential, profile });
+        }
+
+        document.getElementById('googleSignup').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Direct demo signup without alert
+            const demoProfile = {
+                id: 'google_signup_' + Date.now(),
+                name: 'Google Demo User',
+                email: 'signup.google@example.com',
+                picture: 'https://via.placeholder.com/100/4285F4/ffffff?text=G'
+            };
+            socialSignup('google', { token: 'demo_google_token', profile: demoProfile });
+        });
+
+        // Facebook Signup
+        document.getElementById('facebookSignup').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Direct demo signup without alert
+            const demoProfile = {
+                id: 'facebook_signup_' + Date.now(),
+                name: 'Facebook Demo User',
+                email: 'signup.facebook@example.com',
+                picture: { data: { url: 'https://via.placeholder.com/100/1877F2/ffffff?text=F' } }
+            };
+            socialSignup('facebook', { accessToken: 'demo_facebook_token', profile: demoProfile });
+        });
+
+        // Twitter Signup
+        document.getElementById('twitterSignup').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Direct demo signup without alert
+            const demoProfile = {
+                id: 'twitter_signup_' + Date.now(),
+                name: 'Twitter Demo User',
+                screen_name: 'demo_twitter',
+                email: 'signup.twitter@example.com',
+                profile_image_url_https: 'https://via.placeholder.com/100/1DA1F2/ffffff?text=T'
+            };
+            socialSignup('twitter', { 
+                token: 'demo_twitter_token', 
+                tokenSecret: 'demo_twitter_secret', 
+                profile: demoProfile 
+            });
+        });
+
+        // Generic social signup function
+        async function socialSignup(provider, data) {
+            try {
+                console.log(`Attempting ${provider} signup with data:`, data);
+                
+                const response = await fetch(`http://localhost:5000/api/auth/social-login/${provider}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                console.log(`${provider} signup response status:`, response.status);
+                const result = await response.json();
+                console.log(`${provider} signup response data:`, result);
+                
+                if (response.ok) {
+                    // Store the session token
+                    sessionStorage.setItem('sessionToken', result.token);
+                    localStorage.setItem('token', result.token);
+                    localStorage.setItem('user', JSON.stringify(result.user));
+                    
+                    // Show success message
+                    alert(`Welcome ${result.user.name}! Account created and logged in successfully via ${provider.charAt(0).toUpperCase() + provider.slice(1)}.`);
+                    
+                    // Redirect to home page
+                    window.location.href = 'index.html';
+                } else {
+                    console.error(`${provider} signup error:`, result);
+                    alert(result.message || `${provider} signup failed. Please try again.`);
+                }
+            } catch (error) {
+                console.error(`${provider} signup network error:`, error);
+                // Check if server is running
+                alert(`Network error during ${provider} signup. Please check if the server is running on port 5000.`);
+            }
+        }
+
+        // Initialize social signups when page loads (demo mode)
+        window.addEventListener('load', function() {
+            console.log('Social signup demo mode ready');
+            // In production, you would initialize real OAuth SDKs here
+        });
+    </script>
+</body>
+</html>

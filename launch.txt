@@ -1,0 +1,50 @@
+PS England Fashion E-commerce - Launch Instructions
+
+=== BACKEND LAUNCH ===
+1. Navigate to the backend directory:
+   cd "backend"
+
+2. Install dependencies (if not already installed):
+   npm install
+
+3. Start the backend server:
+   npm run dev
+   
+   The backend will run on http://localhost:5000
+   Available API endpoints:
+   - /api/auth (Authentication)
+   - /api/products (Product operations)
+   - /api/reviews (Review operations)
+   - /api/upload (File uploads)
+
+=== FRONTEND LAUNCH ===
+1. The frontend is static HTML/CSS/JS, so you can:
+   
+   Option 1: Open directly in browser
+   - Simply double-click on index.html
+   - Or drag index.html into your browser
+
+   Option 2: Use VS Code Live Server
+   - Install Live Server extension in VS Code
+   - Right-click on index.html
+   - Select "Open with Live Server"
+   - The site will open at http://127.0.0.1:5500 (or similar port)
+
+=== IMPORTANT NOTES ===
+1. Always start the backend first before using the frontend
+2. Make sure MongoDB is running on your system
+3. Check that port 5000 is not in use by another application
+4. The backend uses environment variables from .env file for configuration
+5. If you encounter CORS issues, make sure the frontend URL is allowed in the backend CORS configuration
+
+=== TROUBLESHOOTING ===
+If port 5000 is already in use:
+1. Find the process:
+   netstat -ano | findstr :5000
+2. Kill the process (replace PID with the number from previous command):
+   taskkill /F /PID <PID>
+
+If MongoDB connection fails:
+1. Ensure MongoDB is installed and running
+2. Check MongoDB connection string in backend/.env file
+3. Default MongoDB URL: mongodb://localhost:27017/fashion-store

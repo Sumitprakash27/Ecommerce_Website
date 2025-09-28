@@ -1,0 +1,25 @@
+{
+  "name": "ecommerce-web-app",
+  "version": "1.0.0",
+  "description": "Full-stack e-commerce web application",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "build": "echo 'No build step needed'",
+    "postinstall": "cd backend && npm install"
+  },
+  "keywords": [
+    "ecommerce",
+    "nodejs",
+    "express",
+    "mongodb",
+    "web-app"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

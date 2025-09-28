@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Username - PS England Fashion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .auth-logo img {
+            height: 100px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .auth-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        .auth-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-box h2 {
+            text-align: center;
+            color: var(--black);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .auth-description {
+            text-align: center;
+            color: var(--light-black);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-black);
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--grey);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .auth-btn:hover {
+            background: #e62e68;
+        }
+
+        .auth-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin: 0 10px;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .back-arrow:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        .username-display {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: bold;
+            color: var(--black);
+        }
+
+        @media (max-width: 480px) {
+            .auth-box {
+                padding: 20px;
+            }
+
+            .auth-box h2 {
+                font-size: 1.5rem;
+            }
+
+            .back-arrow {
+                top: 10px;
+                left: 10px;
+                font-size: 1.2rem;
+                padding: 8px;
+            }
+        }
+
+        /* Text Selection Styling */
+        ::selection {
+            background: var(--primary-color, #ff3c78);
+            color: var(--white, #ffffff);
+        }
+
+        ::-moz-selection {
+            background: var(--primary-color, #ff3c78);
+            color: var(--white, #ffffff);
+        }
+    </style>
+</head>
+<body>
+    <a href="login.html" class="back-arrow">
+        <i class='bx bx-arrow-back'></i>
+    </a>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-logo">
+                <a href="index.html">
+                    <img src="https://i.postimg.cc/Xv0zV7BB/Modern-Zoo-Global-Logo-Design.png" alt="PS England Fashion">
+                </a>
+            </div>
+            <h2>Forgot Username</h2>
+            <p class="auth-description">
+                Enter your email address and we'll help you recover your username.
+            </p>
+            
+            <div class="success-message" id="successMessage"></div>
+            <div class="error-message" id="errorMessage"></div>
+
+            <form id="forgotUsernameForm">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit" class="auth-btn" id="submitBtn">
+                    Recover Username
+                </button>
+            </form>
+
+            <div class="auth-links">
+                <a href="login.html">Back to Login</a>
+                <a href="forgot-password.html">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('forgotUsernameForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Recovering...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/forgot-username', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    successMessage.textContent = data.message;
+                    successMessage.style.display = 'block';
+                    
+                    // For development - show username
+                    if (data.username) {
+                        successMessage.innerHTML += `<div class="username-display">Your Username: <strong>${data.username}</strong></div>`;
+                    }
+                    
+                    // Clear form
+                    document.getElementById('email').value = '';
+                } else {
+                    errorMessage.textContent = data.message || 'An error occurred. Please try again.';
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Forgot username error:', error);
+                errorMessage.textContent = 'Network error. Please try again later.';
+                errorMessage.style.display = 'block';
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Recover Username';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - PS England</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar-enhancements.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 100px;
+        }
+        
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .product-images {
+            position: relative;
+        }
+        
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+        
+        .thumbnail-images {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        
+        .thumbnail.active {
+            border-color: var(--primary-color, #ff3c78);
+        }
+        
+        .product-info {
+            padding: 20px 0;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .product-brand {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .rating-info {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .product-price {
+            margin-bottom: 25px;
+        }
+        
+        .current-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color, #ff3c78);
+            margin-right: 15px;
+        }
+        
+        .original-price {
+            font-size: 20px;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        
+        .discount-badge {
+            background: #4caf50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .product-options {
+            margin-bottom: 30px;
+        }
+        
+        .option-group {
+            margin-bottom: 20px;
+        }
+        
+        .option-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .size-options, .color-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .size-option, .color-option {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .size-option.selected, .color-option.selected {
+            border-color: var(--primary-color, #ff3c78);
+            background: var(--primary-color, #ff3c78);
+            color: white;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .quantity-label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .qty-btn {
+            background: #f5f5f5;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .qty-btn:hover {
+            background: var(--primary-color, #ff3c78);
+            color: white;
+        }
+        
+        .qty-input {
+            border: none;
+            text-align: center;
+            width: 60px;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary, .btn-secondary {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color, #ff3c78);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #e6356b;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color, #ff3c78);
+            border: 2px solid var(--primary-color, #ff3c78);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-color, #ff3c78);
+            color: white;
+        }
+        
+        .product-features {
+            margin-bottom: 30px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .feature-icon {
+            font-size: 20px;
+            color: var(--primary-color, #ff3c78);
+        }
+        
+        .feature-text {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .product-description {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .description-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .description-text {
+            line-height: 1.6;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary-color, #ff3c78);
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .main-image {
+                height: 400px;
+            }
+            
+            .product-title {
+                font-size: 24px;
+            }
+            
+            .current-price {
+                font-size: 28px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <section class="top-txt">
+        <div class="head container">
+            <div class="head-txt">
+                <p>Free shipping, 30-day return or refund guarantee.</p>
+            </div>
+            <div class="sing_in_up">
+                <a href="login.html">SIGN IN</a>
+                <a href="signup.html">SIGN UP</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#sellers">Shop</a></li>
+                <li><a href="#news">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://i.postimg.cc/Xv0zV7BB/Modern-Zoo-Global-Logo-Design.png" alt="">
+                </a>
+            </div>
+            <div class="navbar-actions">
+                <div class="cart-icon" onclick="openCart()">
+                    <i class='bx bx-shopping-bag'></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="user-menu" id="userMenu">
+                    <div class="user-icon" onclick="toggleUserMenu()">
+                        <i class='bx bx-user-circle'></i>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-info" id="userInfo" style="display: none;">
+                            <span id="userName">Guest</span>
+                        </div>
+                        <a href="profile.html" id="profileLink" style="display: none;">My Profile</a>
+                        <a href="orders.html" id="ordersLink" style="display: none;">My Orders</a>
+                        <a href="wishlist.html" id="wishlistLink" style="display: none;">Wishlist</a>
+                        <hr id="userDivider" style="display: none;">
+                        <a href="login.html" id="loginLink">Sign In</a>
+                        <a href="signup.html" id="signupLink">Sign Up</a>
+                        <a href="#" id="logoutLink" onclick="logout()" style="display: none;">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <div class="product-detail-container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="index.html#sellers">Products</a> / <span id="productBreadcrumb">Loading...</span>
+        </div>
+
+        <div class="product-detail-grid">
+            <!-- Product Images -->
+            <div class="product-images">
+                <img id="mainProductImage" class="main-image" src="https://via.placeholder.com/500x500?text=Loading..." alt="Product Image">
+                <div class="thumbnail-images" id="thumbnailImages">
+                    <!-- Thumbnails will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Product Information -->
+            <div class="product-info">
+                <h1 class="product-title" id="productTitle">Loading...</h1>
+                <div class="product-brand" id="productBrand">PS England</div>
+                
+                <div class="product-rating">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                    <span class="rating-info">(4.2) • 152 reviews</span>
+                </div>
+
+                <div class="product-price">
+                    <span class="current-price" id="currentPrice">₹0</span>
+                    <span class="original-price" id="originalPrice">₹0</span>
+                    <span class="discount-badge">20% off</span>
+                </div>
+
+                <div class="product-options">
+                    <div class="option-group">
+                        <label class="option-label">Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option selected" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label class="option-label">Color:</label>
+                        <div class="color-options">
+                            <div class="color-option selected" data-color="Black" style="background: #000; color: white;">Black</div>
+                            <div class="color-option" data-color="White" style="background: #fff; border: 2px solid #ddd;">White</div>
+                            <div class="color-option" data-color="Red" style="background: #ff0000; color: white;">Red</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quantity-selector">
+                    <label class="quantity-label">Quantity:</label>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="decreaseQuantity()">−</button>
+                        <input type="number" class="qty-input" id="quantity" value="1" min="1" max="10">
+                        <button class="qty-btn" onclick="increaseQuantity()">+</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="addToCartFromDetail()">
+                        <i class='bx bx-cart-plus'></i> Add to Cart
+                    </button>
+                    <button class="btn-secondary" onclick="buyNowFromDetail()">
+                        <i class='bx bx-lightning'></i> Buy Now
+                    </button>
+                </div>
+
+                <div class="product-features">
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class='bx bx-shield-check feature-icon'></i>
+                            <span class="feature-text">100% Authentic</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class='bx bx-package feature-icon'></i>
+                            <span class="feature-text">Free Shipping</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class='bx bx-refresh feature-icon'></i>
+                            <span class="feature-text">30 Day Returns</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class='bx bx-support feature-icon'></i>
+                            <span class="feature-text">24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-description">
+            <h3 class="description-title">Product Description</h3>
+            <div class="description-text" id="productDescription">
+                Loading product description...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentProduct = null;
+        let selectedSize = 'M';
+        let selectedColor = 'Black';
+
+        // Get product ID from URL
+        function getProductIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // Load product details
+        async function loadProductDetails() {
+            const productId = getProductIdFromUrl();
+            
+            if (!productId) {
+                // Use URL parameters as fallback
+                const urlParams = new URLSearchParams(window.location.search);
+                const fallbackProduct = {
+                    _id: urlParams.get('id') || 'fallback-001',
+                    title: decodeURIComponent(urlParams.get('name') || 'PS England Product'),
+                    price: parseFloat(urlParams.get('price')) / 83 || 25, // Convert INR to USD
+                    mainImage: decodeURIComponent(urlParams.get('image') || 'https://via.placeholder.com/500x500?text=Product+Image'),
+                    descriptionShort: 'Premium quality product from PS England collection',
+                    descriptionLong: 'This premium product features exceptional quality and modern design. Made with attention to detail and crafted to meet the highest standards. Perfect for those who appreciate style and quality.',
+                    stock: 15,
+                    categories: ['fashion', 'premium'],
+                    images: []
+                };
+                
+                if (fallbackProduct.title !== 'PS England Product' || fallbackProduct.price !== 25) {
+                    currentProduct = fallbackProduct;
+                    displayProductDetails(fallbackProduct);
+                    return;
+                } else {
+                    alert('Product not found');
+                    window.location.href = 'index.html';
+                    return;
+                }
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/products/${productId}`);
+                const product = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(product.message || 'Product not found');
+                }
+
+                currentProduct = product;
+                displayProductDetails(product);
+            } catch (error) {
+                console.error('Error loading product:', error);
+                
+                // Create fallback product with basic details based on product ID or title patterns
+                let fallbackProduct = {
+                    _id: productId,
+                    title: 'PS England Premium Product',
+                    price: 29.99,
+                    mainImage: 'https://via.placeholder.com/500x500?text=Product+Image',
+                    descriptionShort: 'Premium quality product from PS England',
+                    descriptionLong: 'This premium product features exceptional quality and modern design. Made with attention to detail and crafted to meet the highest standards.',
+                    stock: 10,
+                    categories: ['fashion', 'premium'],
+                    images: []
+                };
+                
+                // Customize fallback based on product ID patterns
+                if (productId.includes('shoe') || productId.includes('Shoe')) {
+                    fallbackProduct.title = 'PS England Premium Shoes';
+                    fallbackProduct.mainImage = 'https://i.postimg.cc/8CmBZH5N/shoes.webp';
+                    fallbackProduct.descriptionShort = 'Comfortable and stylish footwear';
+                    fallbackProduct.descriptionLong = 'Experience ultimate comfort with our premium shoes collection. Crafted with high-quality materials and modern design, these shoes are perfect for any occasion. Features durable construction, comfortable fit, and timeless style.';
+                    fallbackProduct.price = 39.99;
+                } else if (productId.includes('shirt') || productId.includes('Shirt')) {
+                    fallbackProduct.title = 'PS England Premium Shirt';
+                    fallbackProduct.mainImage = 'https://i.postimg.cc/j2FhzSjf/bs2.png';
+                    fallbackProduct.descriptionShort = 'Stylish and comfortable shirt';
+                    fallbackProduct.descriptionLong = 'Elevate your wardrobe with our premium shirt collection. Made from high-quality fabric with attention to detail, this shirt offers both comfort and style. Perfect for casual and formal occasions.';
+                    fallbackProduct.price = 29.99;
+                } else if (productId.includes('bag') || productId.includes('Bag')) {
+                    fallbackProduct.title = 'PS England Premium Bag';
+                    fallbackProduct.mainImage = 'https://i.postimg.cc/zD02zJq8/na2.png';
+                    fallbackProduct.descriptionShort = 'Durable and stylish bag';
+                    fallbackProduct.descriptionLong = 'Carry your essentials in style with our premium bag collection. Features multiple compartments, durable construction, and modern design. Perfect for daily use, travel, or special occasions.';
+                    fallbackProduct.price = 24.99;
+                } else if (productId.includes('watch') || productId.includes('Watch')) {
+                    fallbackProduct.title = 'PS England Smart Watch';
+                    fallbackProduct.mainImage = 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop';
+                    fallbackProduct.descriptionShort = 'Advanced smartwatch with premium features';
+                    fallbackProduct.descriptionLong = 'Stay connected and track your fitness with our advanced smartwatch. Features health monitoring, notifications, long battery life, and premium build quality. Perfect companion for your active lifestyle.';
+                    fallbackProduct.price = 149.99;
+                } else if (productId.includes('sunglass') || productId.includes('Sunglass')) {
+                    fallbackProduct.title = 'PS England Designer Sunglasses';
+                    fallbackProduct.mainImage = 'https://i.postimg.cc/Dfj5VBcz/sunglasses1.jpg';
+                    fallbackProduct.descriptionShort = 'Premium designer sunglasses';
+                    fallbackProduct.descriptionLong = 'Protect your eyes in style with our premium designer sunglasses. Features UV protection, durable frames, and timeless design. Perfect accessory for any outfit and season.';
+                    fallbackProduct.price = 19.99;
+                }
+                
+                currentProduct = fallbackProduct;
+                displayProductDetails(fallbackProduct);
+            }
+        }
+
+        // Display product details
+        function displayProductDetails(product) {
+            document.getElementById('productTitle').textContent = product.title;
+            document.getElementById('productBreadcrumb').textContent = product.title;
+            
+            const currentPriceINR = Math.round(product.price * 83);
+            const originalPriceINR = Math.round(currentPriceINR * 1.25);
+            
+            document.getElementById('currentPrice').textContent = `₹${currentPriceINR.toLocaleString('en-IN')}`;
+            document.getElementById('originalPrice').textContent = `₹${originalPriceINR.toLocaleString('en-IN')}`;
+            
+            // Set main image
+            const mainImage = document.getElementById('mainProductImage');
+            mainImage.src = product.mainImage || product.image || 'https://via.placeholder.com/500x500?text=Product+Image';
+            mainImage.alt = product.title;
+            
+            // Set description
+            document.getElementById('productDescription').textContent = 
+                product.description || 'This is a premium quality product from PS England. Made with the finest materials and crafted with attention to detail.';
+
+            // Generate thumbnail images (simulate multiple views)
+            const thumbnailContainer = document.getElementById('thumbnailImages');
+            const images = [
+                product.mainImage || product.image || 'https://via.placeholder.com/500x500?text=Product+Image',
+                'https://via.placeholder.com/500x500?text=Side+View',
+                'https://via.placeholder.com/500x500?text=Back+View',
+                'https://via.placeholder.com/500x500?text=Detail+View'
+            ];
+            
+            thumbnailContainer.innerHTML = images.map((img, index) => `
+                <img src="${img}" alt="Product view ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" 
+                     onclick="changeMainImage('${img}', this)">
+            `).join('');
+
+            document.title = `${product.title} - PS England`;
+        }
+
+        // Change main image
+        function changeMainImage(imageSrc, thumbnail) {
+            document.getElementById('mainProductImage').src = imageSrc;
+            
+            // Update thumbnail selection
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        // Size selection
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('size-option')) {
+                document.querySelectorAll('.size-option').forEach(option => option.classList.remove('selected'));
+                e.target.classList.add('selected');
+                selectedSize = e.target.dataset.size;
+            }
+            
+            if (e.target.classList.contains('color-option')) {
+                document.querySelectorAll('.color-option').forEach(option => option.classList.remove('selected'));
+                e.target.classList.add('selected');
+                selectedColor = e.target.dataset.color;
+            }
+        });
+
+        // Quantity controls
+        function increaseQuantity() {
+            const qtyInput = document.getElementById('quantity');
+            const currentValue = parseInt(qtyInput.value);
+            if (currentValue < 10) {
+                qtyInput.value = currentValue + 1;
+            }
+        }
+
+        function decreaseQuantity() {
+            const qtyInput = document.getElementById('quantity');
+            const currentValue = parseInt(qtyInput.value);
+            if (currentValue > 1) {
+                qtyInput.value = currentValue - 1;
+            }
+        }
+
+        // Add to cart from detail page
+        async function addToCartFromDetail() {
+            if (!currentProduct) {
+                alert('Product not loaded');
+                return;
+            }
+
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                alert('Please login to add items to cart');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const quantity = parseInt(document.getElementById('quantity').value);
+
+            try {
+                const response = await fetch('http://localhost:5000/api/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        productId: currentProduct._id,
+                        quantity: quantity
+                    })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(`${quantity} item(s) added to cart successfully!`);
+                    updateCartCount();
+                } else {
+                    alert(result.message || 'Failed to add product to cart');
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                alert('Failed to add product to cart');
+            }
+        }
+
+        // Buy now from detail page
+        function buyNowFromDetail() {
+            if (!currentProduct) {
+                alert('Product not loaded');
+                return;
+            }
+
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                alert('Please login to purchase');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            // For now, redirect to cart after adding item
+            addToCartFromDetail().then(() => {
+                setTimeout(() => {
+                    window.location.href = 'cart.html';
+                }, 1000);
+            });
+        }
+
+        // Cart and user menu functions (same as index.html)
+        function openCart() {
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                alert('Please login to view cart');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            window.location.href = 'cart.html';
+        }
+
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        async function updateCartCount() {
+            const token = localStorage.getItem('token');
+            const cartCountElement = document.getElementById('cartCount');
+            
+            if (!token || !cartCountElement) {
+                if (cartCountElement) cartCountElement.textContent = '0';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:5000/api/cart', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const cartData = await response.json();
+                    const itemCount = cartData.items ? cartData.items.reduce((total, item) => total + item.quantity, 0) : 0;
+                    cartCountElement.textContent = itemCount.toString();
+                } else {
+                    cartCountElement.textContent = '0';
+                }
+            } catch (error) {
+                console.error('Error updating cart count:', error);
+                cartCountElement.textContent = '0';
+            }
+        }
+
+        function updateUserMenu() {
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            const userInfo = document.getElementById('userInfo');
+            const userName = document.getElementById('userName');
+            const profileLink = document.getElementById('profileLink');
+            const ordersLink = document.getElementById('ordersLink');
+            const wishlistLink = document.getElementById('wishlistLink');
+            const userDivider = document.getElementById('userDivider');
+            const loginLink = document.getElementById('loginLink');
+            const signupLink = document.getElementById('signupLink');
+            const logoutLink = document.getElementById('logoutLink');
+            
+            if (token && user.name) {
+                userInfo.style.display = 'block';
+                userName.textContent = user.name || 'User';
+                profileLink.style.display = 'block';
+                ordersLink.style.display = 'block';
+                wishlistLink.style.display = 'block';
+                userDivider.style.display = 'block';
+                loginLink.style.display = 'none';
+                signupLink.style.display = 'none';
+                logoutLink.style.display = 'block';
+            } else {
+                userInfo.style.display = 'none';
+                profileLink.style.display = 'none';
+                ordersLink.style.display = 'none';
+                wishlistLink.style.display = 'none';
+                userDivider.style.display = 'none';
+                loginLink.style.display = 'block';
+                signupLink.style.display = 'block';
+                logoutLink.style.display = 'none';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            sessionStorage.removeItem('sessionToken');
+            window.location.href = 'index.html';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProductDetails();
+            updateCartCount();
+            updateUserMenu();
+            
+            // Close user dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const userMenu = document.getElementById('userMenu');
+                const dropdown = document.getElementById('userDropdown');
+                
+                if (userMenu && dropdown && !userMenu.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

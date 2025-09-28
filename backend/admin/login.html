@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - PS England</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .logo i {
+            color: white;
+            font-size: 32px;
+        }
+
+        .brand-title {
+            color: #333;
+            font-weight: 700;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .brand-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-label {
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            z-index: 10;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login .spinner-border {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 10px;
+        }
+
+        .alert {
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .alert-danger {
+            background-color: #fee;
+            color: #c33;
+        }
+
+        .alert-success {
+            background-color: #efe;
+            color: #3c3;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e9ecef;
+        }
+
+        .divider span {
+            background: white;
+            color: #999;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+
+        .quick-login {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .quick-btn {
+            flex: 1;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+
+        .quick-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .footer-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        @media (max-width: 576px) {
+            .login-container {
+                margin: 20px;
+                padding: 30px 25px;
+            }
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-section">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+            </div>
+            <h1 class="brand-title">PS England</h1>
+            <p class="brand-subtitle">Admin Dashboard Access</p>
+        </div>
+
+        <div id="alertContainer"></div>
+
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="emailUsername" class="form-label">
+                    <i class="fas fa-user me-2"></i>Email or Username
+                </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="emailUsername" name="emailUsername" required>
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">
+                    <i class="fas fa-lock me-2"></i>Password
+                </label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <i class="fas fa-eye password-toggle" onclick="togglePassword()"></i>
+                </div>
+            </div>
+
+            <!-- 2FA Token field (hidden by default) -->
+            <div class="mb-3 d-none" id="twoFactorDiv">
+                <label for="twoFactorToken" class="form-label">
+                    <i class="fas fa-shield-alt me-2"></i>2FA Authentication Code
+                </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="twoFactorToken" name="twoFactorToken" 
+                           placeholder="Enter 6-digit code" maxlength="6">
+                    <i class="fas fa-key"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-login" id="loginBtn">
+                <span class="btn-text">
+                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                </span>
+                <span class="btn-loading d-none">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Authenticating...
+                </span>
+            </button>
+        </form>
+
+        <div class="divider">
+            <span>Quick Login (Demo)</span>
+        </div>
+
+        <div class="quick-login">
+            <div class="quick-btn" onclick="quickLogin('admin')">
+                <i class="fas fa-user-shield d-block mb-1"></i>
+                Super Admin
+            </div>
+            <div class="quick-btn" onclick="quickLogin('manager')">
+                <i class="fas fa-users-cog d-block mb-1"></i>
+                Manager
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <small class="text-muted">
+                <i class="fas fa-info-circle me-1"></i>
+                For support, contact <a href="mailto:admin@psengland.com">admin@psengland.com</a>
+            </small>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let requires2FA = false;
+
+        // Quick login functionality
+        function quickLogin(type) {
+            if (type === 'admin') {
+                document.getElementById('emailUsername').value = 'admin@psengland.com';
+                document.getElementById('password').value = 'Admin123!';
+            } else if (type === 'manager') {
+                document.getElementById('emailUsername').value = 'manager@psengland.com';
+                document.getElementById('password').value = 'Manager123!';
+            }
+            
+            // Focus on login button
+            document.getElementById('loginBtn').focus();
+        }
+
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.password-toggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Show alert function
+        function showAlert(message, type = 'danger') {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertHTML = `
+                <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'} me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `;
+            alertContainer.innerHTML = alertHTML;
+
+            // Auto-dismiss after 5 seconds
+            setTimeout(() => {
+                const alert = alertContainer.querySelector('.alert');
+                if (alert) {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                }
+            }, 5000);
+        }
+
+        // Set loading state
+        function setLoading(loading) {
+            const loginBtn = document.getElementById('loginBtn');
+            const btnText = loginBtn.querySelector('.btn-text');
+            const btnLoading = loginBtn.querySelector('.btn-loading');
+            
+            if (loading) {
+                btnText.classList.add('d-none');
+                btnLoading.classList.remove('d-none');
+                loginBtn.disabled = true;
+            } else {
+                btnText.classList.remove('d-none');
+                btnLoading.classList.add('d-none');
+                loginBtn.disabled = false;
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const emailUsername = document.getElementById('emailUsername').value.trim();
+            const password = document.getElementById('password').value;
+            const twoFactorToken = document.getElementById('twoFactorToken').value;
+
+            if (!emailUsername || !password) {
+                showAlert('Please fill in all required fields.');
+                return;
+            }
+
+            if (requires2FA && !twoFactorToken) {
+                showAlert('Please enter your 2FA authentication code.');
+                return;
+            }
+
+            setLoading(true);
+
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: emailUsername,
+                        password: password,
+                        twoFactorToken: twoFactorToken || undefined
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.requires2FA) {
+                        // Show 2FA input
+                        requires2FA = true;
+                        document.getElementById('twoFactorDiv').classList.remove('d-none');
+                        document.getElementById('twoFactorToken').focus();
+                        showAlert('Please enter your 2FA authentication code.', 'info');
+                    } else {
+                        // Login successful
+                        localStorage.setItem('adminToken', data.token);
+                        localStorage.setItem('adminUser', JSON.stringify(data.admin));
+                        
+                        showAlert('Login successful! Redirecting to dashboard...', 'success');
+                        
+                        // Redirect to admin dashboard
+                        setTimeout(() => {
+                            window.location.href = '/admin/dashboard.html';
+                        }, 1500);
+                    }
+                } else {
+                    // Handle specific error cases
+                    if (response.status === 423) {
+                        showAlert(`Account is locked. ${data.lockExpires ? 'Try again after: ' + new Date(data.lockExpires).toLocaleString() : ''}`);
+                    } else {
+                        showAlert(data.message || 'Login failed. Please try again.');
+                    }
+                    
+                    // Reset 2FA if error
+                    if (requires2FA) {
+                        requires2FA = false;
+                        document.getElementById('twoFactorDiv').classList.add('d-none');
+                        document.getElementById('twoFactorToken').value = '';
+                    }
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('Connection error. Please check your internet connection and try again.');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // Check if already logged in
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('adminToken');
+            if (token) {
+                // Verify token is still valid
+                fetch('/api/admin/verify', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/admin/dashboard.html';
+                    } else {
+                        localStorage.removeItem('adminToken');
+                        localStorage.removeItem('adminUser');
+                    }
+                })
+                .catch(() => {
+                    localStorage.removeItem('adminToken');
+                    localStorage.removeItem('adminUser');
+                });
+            }
+        });
+
+        // Auto-focus on first input
+        document.getElementById('emailUsername').focus();
+
+        // Handle Enter key in 2FA field
+        document.getElementById('twoFactorToken').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>
