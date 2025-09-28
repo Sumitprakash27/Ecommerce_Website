@@ -45,8 +45,8 @@ A modern, responsive e-commerce web application built with HTML, CSS, JavaScript
 ### Option 1: Using Docker (Recommended)
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/ecommerce-web-app.git
-cd ecommerce-web-app
+git clone https://github.com/Sumitprakash27/Ecommerce_Website.git
+cd Ecommerce_Website
 
 # Run with Docker Compose
 docker-compose up --build
@@ -56,86 +56,46 @@ docker-compose up --build
 # API: http://localhost:5000
 ```
 
-### Frontend Setup
-
-The frontend is pre-built and served statically. No additional setup is required.
-
-## Docker Setup (Optional)
-
-1. Build and run with Docker Compose:
-   ```bash
-   docker-compose up --build
-   ```
-
-## Testing
-
-Run backend tests:
+### Option 2: Manual Setup
 ```bash
+# Clone the repository
+git clone https://github.com/Sumitprakash27/Ecommerce_Website.git
+cd Ecommerce_Website
+
+# Install backend dependencies
 cd backend
-npm test
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configurations
+
+# Start the backend server
+npm start
+
+# Open frontend in browser
+# Open index.html in your browser or use a local server
 ```
 
-## Accessibility Checklist
+## 🌐 Deployment
 
-- [x] Semantic HTML structure
-- [x] ARIA labels for interactive elements
-- [x] Keyboard navigation support
-- [x] Color contrast compliance
-- [x] Screen reader compatibility
-- [x] Responsive design
-- [x] Focus management
+### Deploy to Railway (Easiest)
+1. Fork this repository
+2. Go to [Railway](https://railway.app)
+3. Connect your GitHub account
+4. Deploy from your forked repository
+5. Add environment variables in Railway dashboard
 
-## Security Features
+### Deploy to Heroku
+```bash
+heroku create your-app-name
+heroku config:set MONGODB_URI=your-mongodb-uri
+heroku config:set JWT_SECRET=your-jwt-secret
+git push heroku main
+```
 
-- JWT authentication
-- Password hashing with bcrypt
-- File upload validation
-- CORS configuration
-- Rate limiting
-- Input sanitization
+## 📞 Support
 
-## Browser Support
+If you have any questions or need help, please create an issue in the GitHub repository.
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Performance Goals
-
-- Lighthouse Performance Score: >90
-- First Contentful Paint: <1s
-- Time to Interactive: <2s
-- Largest Contentful Paint: <2.5s
-
-## Cloud Storage Setup
-
-### AWS S3
-
-1. Create an S3 bucket
-2. Set up IAM user with S3 access
-3. Add AWS credentials to .env file
-4. Update upload middleware to use S3
-
-### Cloudinary
-
-1. Create Cloudinary account
-2. Add Cloudinary credentials to .env file
-3. Update upload middleware to use Cloudinary
-
-## HTTPS Setup
-
-1. Install SSL certificate
-2. Enable HTTPS in Express
-3. Configure HSTS
-4. Set up CSP headers
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
-
-## License
-
-MIT
+⭐ Give a star if this project helped you!
