@@ -1,0 +1,16 @@
+{
+  "name": "ecommerce-frontend",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
