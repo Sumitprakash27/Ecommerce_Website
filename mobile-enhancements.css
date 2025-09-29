@@ -127,11 +127,50 @@
         z-index: 998;
     }
     
-    /* Make luxury essentials text smaller for mobile readability */
-    .home_txt .home_label p {
+    /* Hide home_label in mobile view */
+    .home_txt .home_label {
+        display: none !important;
+    }
+    
+    /* Mobile responsive text sizing for home_txt */
+    .home_txt {
+        max-width: 90% !important;
+        padding: 12px !important;
+        top: 25% !important;
+        left: 5% !important;
+    }
+    
+    .home_txt p {
+        font-size: 0.75rem !important;
+        padding-bottom: 10px !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    .home_txt h2 {
+        font-size: 1.4rem !important;
+        line-height: 1.2 !important;
+        letter-spacing: 1px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .home_txt button {
+        padding: 8px 16px !important;
         font-size: 0.8rem !important;
-        line-height: 1.3 !important;
-        font-weight: 400 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Hide social icons completely in mobile view */
+    .home_txt .home_social_icons {
+        display: none !important;
+    }
+    
+    /* Fix news section spacing - add top padding to prevent overlap */
+    .l-news2 {
+        padding-top: 40px !important;
+    }
+    
+    .l-news3 {
+        padding-top: 40px !important;
     }
     
     /* Hide desktop search in mobile */
